@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lesson1</h1>
+    <script>
+        'use strict';
+        
+        /************** New features in ES6 ***************/
+
+        let r = 2 ** 3 
+        console.log(r);// 2^3 =8
+
+        /**************************************************/
+        var obj = {
+            a:1,
+            b:2
+        }
+
+        const masOfValues = Object.values(obj);
+        console.log(masOfValues); //Array [1,2]
+        const masOfKeys = Object.keys(obj);
+        console.log(masOfKeys); //Array [a,b]
+        
+        /***************** Template literals ******************************/
+
+        let firstName='Ivan';
+        let lastName='Ivanov';
+        let year = 1990;
+
+        function getAge(year){
+            const date = new Date();
+            const currentYear = date.getFullYear();
+            return currentYear-year;
+        }
+
+        const INFO = `User ${firstName} is ${getAge(year)} year old`;
+        console.log(INFO);
+        console.log(INFO.indexOf("Ivan"));
+        console.log(INFO.endsWith("Ivan"));
+        console.log(INFO.repeat(5));
+
+        /***************** Arrow functions ******************************/
+
+        let sum1 = function(a){
+            return a + 10;
+        }
+
+        let sum2 = (a) => a + 10;
+        let sum3 = (a, b=1) => {
+            a = +a;
+            if(!isNaN(a)){
+                console.log(a+b);
+            } else{
+                console.log('Incorrect value');
+            }
+        }
+
+        /**********************************************/
+        let arr = ['PHP','JS','Python'];
+        arr.forEach( (item, i)=>console.log(`${i+1} ${item}`));
+
+        let filterArr = arr.filter(item => item.length>2);
+        console.log(filterArr);
+
+        let findArr = arr.find(item => item.length>2); // return only first element
+        console.log(findArr);
+
+        /*************** map transfer one array to another *******************************/
+        let sizeArr =arr.map(item=>item.length);
+        console.log(sizeArr);
+
+    </script>
+
+</body>
+</html>

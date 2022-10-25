@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lesson1</h1>
+    <button class="button1">MyButton1</button>
+    <button class="button2">MyButton2</button>
+    <button class="button3">MyButton3</button>
+    <script>
+        'use strict';
+
+        /********** Differnt between "=>" and "function" ************/
+
+        let box1 ={
+            color:'green',
+            position:10,
+            demo: function(){
+                document.querySelector('.button1').addEventListener('click',function(){
+                    console.log(this); // this = source of event = button
+                    console.log(`Container number ${this.position} , color ${this.color}`)
+                })
+            }
+        }
+        box1.demo();
+
+        let box2 ={
+            color:'green',
+            position:10,
+            demo: function(){
+                const x=this;
+                document.querySelector('.button2').addEventListener('click',function(){
+                    console.log(x); // this = box
+                    console.log(`Container number ${x.position} , color ${x.color}`)
+                })
+            }
+        }
+        box2.demo();
+
+        // arrow functions do not have own "this", and they use parent "this"
+        let box3 ={
+            color:'green',
+            position:20,
+            demo: function(){
+                document.querySelector('.button3').addEventListener('click', (event) => {
+                    event.target.style.color = 'red';
+                    console.log(this); // this = box
+                    console.log(`Container number ${this.position} , color ${this.color}`)
+                })
+            }
+        }
+        box3.demo();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lesson1</h1>
+    <script>
+        'use strict';
+
+        /**** destructurization ****/
+
+        let mas = ['Ivan', 20];
+
+        let [name1, age1] = mas;
+        console.log(name1); // Ivan
+
+        let obj1 ={
+            firstName: 'Ivan',
+            lastName: 'Ivanov',
+            professions: ['programmer', 'devops']
+        }
+
+        let { firstName:name , lastName , professions: [p1,p2]} = obj1;
+        console.log(`name: ${name} lastName: ${lastName} has ${[p1,p2]}`);
+
+        /**** destructurization ****/
+
+        function getAge(year){
+            const date = new Date();
+            const currentYear = date.getFullYear();
+            return currentYear-year;
+        }
+
+        const showInfo = year => {
+            let age = getAge(year);
+            return [age, 65-age];
+        }
+
+        let[age, leftWork] = showInfo(1990);
+        console.log(`age ${age}, left ${leftWork}`);
+
+
+    </script>
+
+</body>
+</html>
