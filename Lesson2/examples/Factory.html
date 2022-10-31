@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lesson2 OOP ES6</h1>
+    <script>
+        'use strict';
+
+        class Car
+        {
+            constructor(title,price){
+                this.title=title;
+                this.price=price;
+            }
+        }
+
+        class Factory{
+            constructor(titleFactory){
+                this.titleFactory = titleFactory;
+            }
+
+            /**
+             * Создаем машину. Цена случайная
+             * @param title
+             */
+            createCar(title){
+                console.log(`Сборка началась на заводе ${this.titleFactory}`)
+                const car = new Car(title, parseInt(Math.random() * 4000 + 1000));
+                return car;
+            }
+        }
+
+        /**
+         *
+         */
+        class Order{
+            /**
+             *
+             * @param countCars количество авто
+             * @param factory объект завод
+             * @param models массив моделей
+             * @param diller
+             */
+            constructor(countCars, factory, models, diller){
+                this.countCars = countCars;
+                this.factory=factory;
+                this.models = models;
+                this.diller=diller;
+                this.cars = []; //фура
+                this.sumOrder=0; //сумма заказа
+                this.initOrder(); //в этом методе заполним массив cars 
+            }
+        }
+
+    </script>
+
+</body>
+</html>

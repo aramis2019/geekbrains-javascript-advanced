@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lesson2 OOP ES6</h1>
+    <script>
+        'use strict';
+
+        class Test{
+            static x=10;
+
+            constructor(){
+                this.y = 10;
+            }
+
+            f(){
+                console.log(`x=${++Test.x}`);
+                console.log(`y=${++this.y}`);
+            }
+        }
+
+        let obj1 = new Test();
+        let obj2 = new Test();
+
+        obj1.f();
+        obj1.f();
+        obj2.f();
+        obj2.f();
+
+    </script>
+
+</body>
+</html>

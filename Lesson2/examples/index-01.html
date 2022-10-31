@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lesson2 OOP ES6</h1>
+    <script>
+        'use strict';
+        /*
+        there is 2 types of methods:
+        1 Methods of object
+        2 Methods of class . They use modificator "static"
+        */
+
+        class Office{
+            /**
+             * Меняем оклад сотрудника.
+             * @param man
+             * @param rate - процент от зарплаты
+             */
+            setRate(man, rate){
+                console.log(rate > 0 ? `Сотруднику ${man.fio} положена премия ${rate}`: `Сотруднику ${man.fio} получает взыскание ${rate}`);
+                man.salary += man.salary * rate / 100;
+            }
+        }
+
+        class Person{
+            constructor(fio, age, salary,id){
+                this.fio=fio;
+                this.age=age;
+                this.id=id;
+                this.salary=salary;
+            }
+
+            getInfo(){
+                return `Employee ${this.fio} , оклад ${this.salary}`;
+            }
+
+            // it is class method. Not object method. Static.
+            static getManWithMaxSalary(men){
+                let manMax = men[0];
+                for(let i = 1 ; i < men.length; i++){
+                    if(manMax.salary < men[i].salary){
+                        manMax = men[i];
+                    }
+                }
+                return manMax;
+            }
+
+            static getManWithMinSalary(men){
+                let manMax = men[0];
+                for(let i = 1 ; i < men.length; i++){
+                    if(manMax.salary > men[i].salary){
+                        manMax = men[i];
+                    }
+                }
+                return manMax;
+            }
+        }
+
+        const man1 = new Person('Ivan1',20,200,1);
+        const man2 = new Person('Ivan2',22,700,2);
+
+        let office = [man1,man2];
+        office.forEach(man=> console.log(man.getInfo()));
+
+        const manMax = Person.getManWithMaxSalary(office);
+        console.log(manMax);
+        const manMin = Person.getManWithMinSalary(office);
+        console.log(manMin);
+        const RATE = 20;
+
+        const motivation = new Office();
+        motivation.setRate(manMax,-RATE);
+        motivation.setRate(manMin,RATE);
+
+        office.forEach(man=> console.log(man.getInfo()));
+
+    </script>
+
+</body>
+</html>
