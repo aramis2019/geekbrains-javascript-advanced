@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lesson3 Курсы валют</h1>
+
+    <div></div>
+    <script>
+        'use strict';
+        async function f(){
+            let src = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
+            let obj  = await src.json();
+            let usd  = await obj.Valute.USD.Value;
+
+            console.log(`usd ${usd}`);
+
+
+            fetch("ajax/phones.json")
+                .then(text=>text.json()) // text - это объект с исходником файла. Метод json() преобразует исходник в объект(или массив объектов) и вернет промиз
+                .then(data=>{
+                    data.forEach(i=>{
+                      console.log(` Price ${(i.price/usd).toFixed(2)} USD`);
+                    })
+                });
+
+        }
+
+        f();
+
+
+    </script>
+
+</body>
+</html>

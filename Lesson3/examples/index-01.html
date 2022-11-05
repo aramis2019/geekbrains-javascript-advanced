@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lesson3 JSON</h1>
+    <script>
+        'use strict';
+        let user = '{"name": "Ivan", "age":25, "isAdmin": true}';
+        let userObj = JSON.parse(user);
+
+        userObj.dateCreated = '2022-08-22';
+        userObj.address = {
+            city:'Moscow',
+            postCode:'4100001'
+        }
+        console.log(userObj);
+
+        // convert obj to string
+        //let userStr = JSON.stringify(userObj, ["name","age", "address", "city"], 4);
+        let userStr = JSON.stringify(userObj, null, 4);
+        console.log(userStr);
+
+        //
+        let user2 = JSON.parse(userStr, (key, value)=>{
+            if(key =='dateCreated'){
+                value = new Date(value);
+            }
+            return value;
+        });
+
+        console.log(user2);
+    </script>
+
+</body>
+</html>

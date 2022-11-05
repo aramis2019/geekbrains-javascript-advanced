@@ -30,11 +30,6 @@ class GoodsList {
     totalPrice(){
         let result = 0;
         this.goods.forEach(c=> result += c.price);
-
-        // Вариант 2
-        for(let product of this.goods){
-            result += product.price;
-        }
         return result;
     }
 }
@@ -57,25 +52,3 @@ class GoodsItem {
 }
 
 const list = new GoodsList();
-
-class Basket{
-    addGood(){
-    }
-
-    removeGood(){
-
-    }
-
-    changeGood(){
-
-    }
-
-    render(){
-
-    }
-}
-
-class BasketItem{
-    render(){
-    }
-}
