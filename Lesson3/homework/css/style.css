@@ -10,3 +10,7 @@ body {
 .goods-item{
     margin: 10px;
 }
+
+.invisible{
+    display: none;
+}

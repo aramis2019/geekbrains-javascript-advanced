@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lesson4 RegExp</h1>
+    <script>
+        'use strict';
+        // Синтаксис 1
+        //const regExp = new RegExp("Само проавило", "Флаги");
+
+        // Синтаксис 2
+        //const regExp2 = /Само правило/флаги;
+
+        //Флаги
+        // i - поиск без регистра
+        // g - множественный поиск
+        // m - многострочный поиск
+
+        let str = "Язык JavaScript называтся из-за популярности языка Java";
+        //let regExp = new RegExp("java","i");
+        let regExp = /java/i;
+        console.log(regExp.test(str));
+
+
+        // String methods
+        //search - вернет индекс первого элемента, либо -1
+        console.log(str.search(/java/i));
+
+        // match - вернет массив объект либо null
+        console.log(str.match(/java/ig));
+
+
+        // Замена строк
+        console.log('+7(000)000-00-00'.replace('-',':'));
+
+        console.log('+7(000)000-00-00'.replace(/-/g,':'));
+
+
+        // Создание правил
+        // [0123456789] или [0-9] или \d
+        // [a-z0-9] или \w
+        // [а-яА-ЯЁ]
+        // \s - пробел или TAB
+        // \b -проверка на границу слова.
+        console.log('Язык JavaScript'.match(/\bjava/i));
+
+        // \D - все кроме цифр [^0-9]
+
+        console.log('+7(000)000-00-00'.match(/\d+/g,':').join(''));
+
+        // Проверка на email
+        console.log('test@mail.ru'.match(/^[a-z0-9_.-]+@[a-z0-9_.-]+\.+[a-z]{2,4}$/i));
+
+
+    </script>
+
+</body>
+</html>

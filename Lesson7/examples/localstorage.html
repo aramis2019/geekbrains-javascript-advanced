@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Текстовый редактор</title>
+    <style>
+        #block{
+            border: 3px solid black;
+            border-radius: 70px;
+            background-color: greenyellow;
+            padding: 10 20;
+            font-size:30px;
+            margin: 55 200 0px;
+        }    
+    </style>
+</head>
+<body>
+    <div id="block">
+            <p>
+                sldfkjksdjf ksahdfk hsdakfh kash fkshadfk shakfh 
+            </p>
+    </div>
+    <input type="button" id="edit" value="редактор">
+    <input type="button" id="save" value="Сохранить">
+    
+    <script>
+        let edit = document.getElementById('edit');
+        let save = document.getElementById('save');
+        let div = document.getElementById('block');
+        div.innerHTML = localStorage.getItem("x");
+        
+        edit.onclick = function(){
+            div.contentEditable = true
+        }
+        save.onclick = function(){
+            localStorage.setItem("x",div.innerHTML);
+        }
+        
+        
+    </script>
+</body>
+</html>

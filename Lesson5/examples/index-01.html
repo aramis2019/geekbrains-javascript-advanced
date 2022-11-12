@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lesson5 VUE</h1>
+
+    <div id="app">
+        <h1>Hello {{ name }}</h1>
+        <h2>Hello {{ welcome() }}</h2>
+        <a :href="link">Go</a>
+        <button @click="counter++">OK1</button>
+        <button @click="increase(forCounter)">OK2</button>
+        <span>Counter:{{counter}}</span>
+        <div v-show="show">
+            <h2 v-if="show">Text visible</h2>
+            <h2 v-else>text is not visible</h2>
+        </div>
+        <button @click="show=!show">Show-Hide</button>
+        <hr>
+        <p>{{counter>10? "Counter > 10": "counter<10"}}</p>
+
+        <p @mousemove="getCoordinates($event)"> Coordinates {{x}} / {{y}}
+        <span @mousemove.stpo> No not get coordinates in this span</span>
+
+            <input type="text" v-model="name">
+
+            <input type="text" v-model.lazy="name">
+
+            <div v-html="completeEl"></div>
+        </p>
+        <div v-for="item of products">
+            <p>Name:{{item.title}}</p>
+            <p>Price:{{item.price}}</p>
+            <img width="50" :src="item.img" als="">
+            <button @click="addProduct(item)">Add to cart</button>
+            <hr>
+        </div>
+        <h1>Cart</h1>
+        <div v-for="item of cart">
+            <p>Name:{{item.title}}</p>
+            <p>Price:{{item.price}}</p>
+            <p>Quantity:{{item.quantity}}</p>
+            <p>Total price:{{item.price * item.quantity}}</p>
+            <hr>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+    <script>
+
+        const app = new Vue({
+            el: "#app",
+            data:{
+                name: 'Ivan',
+                link: 'https://google.com',
+                counter: 0,
+                forCounter:10,
+                show: true,
+                x:0,
+                y:0,
+                completeEl: '<a href="https://google.com">Go go google</a>',
+                cart:[],
+                products: []
+            },
+            methods:{
+                increase(value){
+                    this.counter +=value;
+                },
+                welcome(){
+                    return `${this.name}, good day!`
+                },
+                getCoordinates(e){
+                    this.x=e.clientX
+                    this.y=e.clientY
+
+                },
+                addProduct(item){
+                    console.log(item);
+                    let find = this.cart.find(p=>p.id==item.id);
+                    if(find){
+                        find.quantity++;
+                    }else{
+                        //let itemCart = Object.assign(item, {quantity:1});
+                        this.$set(item,'quantity',1);
+                        this.cart.push(item);
+                    }
+                    console.log(this.cart);
+                }
+            },
+            mounted(){
+                this.products= [
+                    {
+                        id: 1,
+                        title:'audi',
+                        price:1000,
+                        img:'https://via.placeholder.com/50x50'
+                    },
+                    {
+                        id: 2,
+                        title:'bmw',
+                        price:3500,
+                        img:'https://via.placeholder.com/50x50'
+                    },
+                    {
+                        id: 3,
+                        title:'lada',
+                        price:888,
+                        img:'https://via.placeholder.com/50x50'
+                    }
+                ]
+            }
+        });
+    </script>
+
+</body>
+</html>
