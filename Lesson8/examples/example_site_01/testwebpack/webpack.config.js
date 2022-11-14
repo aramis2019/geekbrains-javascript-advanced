@@ -1,6 +1,7 @@
 module.exports = {
     entry: './script',
+    mode: 'production',
     output:{
-        filename:'./build.js'
+        filename:'./build1.js'
     }
 }
