@@ -1,0 +1,17 @@
+{
+  "name": "code8",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "x": "jasmine spec/pow.spec.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jasmine": "^3.7.0",
+    "jasmine-core": "^3.7.1"
+  },
+  "devDependencies": {},
+  "description": ""
+}
